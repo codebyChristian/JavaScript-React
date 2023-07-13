@@ -1,3 +1,9 @@
+import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
+import logo from './logo.svg';
+import './App.css';
 
 
 function ExemploCard() {
@@ -16,3 +22,6 @@ function ExemploCard() {
         
     )
   }
+
+
+  export default ExemploCard;

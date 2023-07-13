@@ -1,18 +1,13 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
-import logo from './logo.svg';
-import './App.css';
+import ExemploCard from './exemplo_card';
 
-
-
+import ListaProduto from './list_produtos';
 
 function App() {
   return (
-    <div className="App">
-      <ExemploCard />
-    </div>
+    <ListaProduto/>
+  
   );
 }
 
