@@ -1,10 +1,10 @@
-import React from "react";
+
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // As imagens só funcionam por importação
 import imagemSabao from './photo_react/sabonete.jpg';
@@ -37,15 +37,14 @@ const adicionarAoCarrinho = (produtos) => {
     setShowModal(true);
 };
 
-const rederionaCarrinho = () => {
+const handleCloseModal = () => {
     setShowModal(false);
     // aqui colocar o carrinho
 }
 
 //Array com as imformações dos produtos
 const ListaProduto = () => {
-    // Declarar const do modal
-    const [showModal, setShowModal] = useState(false);
+    
     // Dados do produtos
     const produtos = [
         {
@@ -136,11 +135,14 @@ const ListaProduto = () => {
                     Deseja ir para a tela do carrinho de compras?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => {
-                    handleCloseModal();
-                        // Aqui o botao vai para o carrinho
+                    <Button variant="primary" onClick={handleCloseModal}>
+                    Fechar
+                    </Button>
+                    <Button variant="secondary" onClick={() => {
+                        handleCloseModal();
+                        //Redirecionar
                     }}>
-                        Ir para o Carrinho
+                        Ir para o carrinho
                     </Button>
                 </Modal.Footer>
 
