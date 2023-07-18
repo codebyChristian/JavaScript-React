@@ -1,4 +1,5 @@
-
+// Importar carrinho
+import TelaCar from './tela_car.js';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,6 +16,7 @@ const imagemBase = require('./photo_react/base.jpg');
 const imagemCondiciona = require('./photo_react/condicionador.jpg');
 const imagemCreme = require('./photo_react/creme.jpg');
 const imagemPincel = require('./photo_react/pincel.jpg');
+
 
 
 const ListaProduto = () => {
@@ -35,49 +37,49 @@ const ListaProduto = () => {
             id: 2,
             nome: "Brilho",
             descricao: "Mais brilhante",
-            preco: 10.00,
+            preco: 25.00,
             imagem: imagemBrilho
         }, 
         {
             id: 3,
             nome: "Perfume",
             descricao: "Mixo de gato",
-            preco: 10.00,
+            preco: 350.00,
             imagem: imagemPerfume
         },
         {
             id: 4,
             nome: "Batom",
             descricao: "Batom da Marta",
-            preco: 10.00,
+            preco: 25.00,
             imagem: imagemBatom
         },
         {
             id: 5,
             nome: "Base",
             descricao: "Base da Virginia",
-            preco: 10.00,
+            preco: 200.00,
             imagem: imagemBase
         },
         {
             id: 6,
             nome: "Condicionador",
             descricao: "Não cai cabelo",
-            preco: 10.00,
+            preco: 15.00,
             imagem: imagemCondiciona
         },
         {
             id: 7,
             nome: "Creme",
             descricao: "É do bom",
-            preco: 10.00,
+            preco: 135.00,
             imagem: imagemCreme
         },
         {
             id: 8,
             nome: "Pincel",
             descricao: "Variedades incríveis de pinceis",
-            preco: 10.00,
+            preco: 20.00,
             imagem: imagemPincel
         },
         // repita com outros
@@ -86,7 +88,7 @@ const ListaProduto = () => {
 //Adicionando a função do carrinho de compras
 const adicionarAoCarrinho = (produtos) => {
     //Vare para vê se há itens no carrinho
-    let itensCarrinho = localStorage.getItem('carrinho');
+    let itensCarrinho = localStorage.getItem('carrinho') || '[]';
     if (itensCarrinho) {
         // Se tiver, o JSON faz o parse
         itensCarrinho = JSON.parse(itensCarrinho);
@@ -108,6 +110,7 @@ const adicionarAoCarrinho = (produtos) => {
 
 const handleCloseModal = () => {
     setShowModal(false);
+    window.location.href = '/TelaCar';
     // aqui colocar o carrinho
 };
 
