@@ -28,71 +28,96 @@ const ListaProduto = () => {
 
     const navigate = useNavigate();
 
-    // Dados do produtos
-    const produtos = [
+    // Dados do produto
+    const produto = [
         {
             id: 1,
             nome: "Sabonete",
             descricao: "Sabonete suave",
             preco: 10.00,
-            imagem: imagemSabao
+            imagem: imagemSabao,
+            quantidade: 1
         }, 
         {
             id: 2,
             nome: "Brilho",
             descricao: "Mais brilhante",
             preco: 25.00,
-            imagem: imagemBrilho
+            imagem: imagemBrilho,
+            quantidade: 1
         }, 
         {
             id: 3,
             nome: "Perfume",
             descricao: "Mixo de gato",
             preco: 350.00,
-            imagem: imagemPerfume
+            imagem: imagemPerfume,
+            quantidade: 1
         },
         {
             id: 4,
             nome: "Batom",
             descricao: "Batom da Marta",
             preco: 25.00,
-            imagem: imagemBatom
+            imagem: imagemBatom,
+            quantidade: 1
         },
         {
             id: 5,
             nome: "Base",
             descricao: "Base da Virginia",
             preco: 200.00,
-            imagem: imagemBase
+            imagem: imagemBase,
+            quantidade: 1
         },
         {
             id: 6,
             nome: "Condicionador",
             descricao: "Não cai cabelo",
             preco: 15.00,
-            imagem: imagemCondiciona
+            imagem: imagemCondiciona,
+            quantidade: 1
         },
         {
             id: 7,
             nome: "Creme",
             descricao: "É do bom",
             preco: 135.00,
-            imagem: imagemCreme
+            imagem: imagemCreme,
+            quantidade: 1
         },
         {
             id: 8,
             nome: "Pincel",
             descricao: "Variedades incríveis de pinceis",
             preco: 20.00,
-            imagem: imagemPincel
+            imagem: imagemPincel,
+            quantidade: 1
         },
         // repita com outros
     ];
 
 //Adicionando a função do carrinho de compras
-const adicionarAoCarrinho = (produtos) => {
+const adicionarAoCarrinho = (produto) => {
+    //o produto está no carrinho?
+    const produtoNoCarrinho = carrinho.find((item) => item.id === produto.id);
+    
+    if (produtoNoCarrinho) {
+        //Se estiver, atualiza o numero
+        setCarrinho((prevCarrinho) => 
+            prevCarrinho.map((item) =>
+                item.id === produto.id
+                    ? { ...item, quantidade: item.quantidade + 1}
+                    : item
+                    )
+                    );
+    } else {
+        // Se não está, adiciona 1
+        setCarrinho((prevCarrinho) => [...prevCarrinho, { ...produto, quantidade: 1 }]);
+    }
+//set modal
 
-    const novoCarrinho = [...carrinho, produtos];
+    const novoCarrinho = [...carrinho, produto];
     setCarrinho(novoCarrinho);
     localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
 
@@ -101,11 +126,11 @@ const adicionarAoCarrinho = (produtos) => {
     if (itensCarrinho) {
         // Se tiver, o JSON faz o parse
         itensCarrinho = JSON.parse(itensCarrinho);
-        itensCarrinho.push(produtos)
+        itensCarrinho.push(produto)
         
     } else {
         //Se não tiver, cria um array
-        itensCarrinho = [produtos];
+        itensCarrinho = [produto];
     }
 
     //Como pedido, armazena os itens em localStorage
@@ -130,22 +155,27 @@ const handleCloseModal = () => {
     // aqui colocar o carrinho
 };
 
-//Array com as imformações dos produtos
+const handleCloseModal1 = () => {
+    setShowModal(false);
+    // aqui colocar o carrinho
+};
+
+//Array com as imformações dos produto
 
     return(
         <div>            
             <h1>Produtos Disponíveis</h1>
             <Row className="row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-0">                
-                {produtos.map(produtos => (
+                {produto.map(produto => (
 
-                    <Col key={produtos.id} className="mb-4">
-                        <Card key={produtos.id} style={{width: '95%'}} className="text-center">
-                            <Card.Img variant="top" src={produtos.imagem} alt={produtos.nome}/>
+                    <Col key={produto.id} className="mb-4">
+                        <Card key={produto.id} style={{width: '95%'}} className="text-center">
+                            <Card.Img variant="top" src={produto.imagem} alt={produto.nome}/>
                             <Card.Body>
-                                <Card.Title>{produtos.nome}</Card.Title>
-                                <Card.Text>{produtos.descricao}</Card.Text>
-                                <Card.Text>Preço: R$ {produtos.preco}</Card.Text>
-                                <Button variant="primary" onClick={() => adicionarAoCarrinho(produtos)}>Adicione ao carrinho</Button>
+                                <Card.Title>{produto.nome}</Card.Title>
+                                <Card.Text>{produto.descricao}</Card.Text>
+                                <Card.Text>Preço: R$ {produto.preco}</Card.Text>
+                                <Button variant="primary" onClick={() => adicionarAoCarrinho(produto)}>Adicione ao carrinho</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -161,7 +191,7 @@ const handleCloseModal = () => {
                     Deseja ir para a tela do carrinho de compras?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleCloseModal}>
+                    <Button variant="primary" onClick={handleCloseModal1}>
                     Fechar
                     </Button>
                     <Button variant="secondary" onClick={() => {
