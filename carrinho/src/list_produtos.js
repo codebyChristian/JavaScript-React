@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // As imagens só funcionam por importação
 const imagemSabao = require('./photo_react/sabonete.jpg');
@@ -23,6 +24,9 @@ const ListaProduto = () => {
     
     const [showModal, setShowModal] = useState(false);    // Definindo a variável showModal e a função setShowModal
 
+    const [carrinho, setCarrinho] = useState([]);
+
+    const navigate = useNavigate();
 
     // Dados do produtos
     const produtos = [
@@ -87,6 +91,11 @@ const ListaProduto = () => {
 
 //Adicionando a função do carrinho de compras
 const adicionarAoCarrinho = (produtos) => {
+
+    const novoCarrinho = [...carrinho, produtos];
+    setCarrinho(novoCarrinho);
+    localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+
     //Vare para vê se há itens no carrinho
     let itensCarrinho = localStorage.getItem('carrinho') || '[]';
     if (itensCarrinho) {
@@ -108,9 +117,16 @@ const adicionarAoCarrinho = (produtos) => {
     
 };
 
+
+//Limpar carrinho
+const limparCarrinho = () => {
+    setCarrinho([]);
+    localStorage.removeItem('carrinho');
+};
+
 const handleCloseModal = () => {
     setShowModal(false);
-    window.location.href = '/TelaCar';
+    navigate('/TelaCar');
     // aqui colocar o carrinho
 };
 
@@ -153,6 +169,9 @@ const handleCloseModal = () => {
                         //Redirecionar
                     }}>
                         Ir para o carrinho
+                    </Button>
+                    <Button variant="danger" onClick={limparCarrinho}>
+                    Limpar Carrinho
                     </Button>
                 </Modal.Footer>
 
