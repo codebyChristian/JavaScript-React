@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 const TelaCar = () => {
-    // Chamar os itens do carrinho pelo localStorage
-    const carrinhoItens = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const [carrinhoItens, setCarrinhosItens] = useState([]);
 
     const calcularValorTotal = () => {
         return carrinhoItens.reduce((total, item) => total + item.preco * item.quantidade, 0);
@@ -14,6 +13,14 @@ const TelaCar = () => {
     const voltarParaProdutos = () => {
         navigate('/');
     };
+
+        // Buscar os itens do carrinho
+    useEffect(() => {
+        const storedCarrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        setCarrinhosItens(storedCarrinho);
+    }, []);
+
+
     
 
     return(
