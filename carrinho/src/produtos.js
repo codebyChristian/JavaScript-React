@@ -12,6 +12,8 @@ import imagemCondiciona from "./photo_react/condicionador.jpg";
 import imagemCreme from "./photo_react/creme.jpg";
 import imagemPincel from "./photo_react/pincel.jpg";
 
+const cartImage = require("./photo_react/carrinho_logo.png");
+
 const Produtos = () => {
   const [showModal, setShowModal] = useState(false);
   const [carrinho, setCarrinho] = useState([]);
@@ -36,13 +38,89 @@ const Produtos = () => {
 
   // Dados do produto
   const produtos = [
-    // Product data here...
+    {
+      id: 1,
+      nome: "Sabonete",
+      descricao: "Sabonete suave",
+      preco: 10.0,
+      imagem: imagemSabao,
+      quantidade: 1,
+    },
+    {
+      id: 2,
+      nome: "Brilho",
+      descricao: "Mais brilhante",
+      preco: 25.0,
+      imagem: imagemBrilho,
+      quantidade: 1,
+    },
+    {
+      id: 3,
+      nome: "Perfume",
+      descricao: "Mixo de gato",
+      preco: 350.0,
+      imagem: imagemPerfume,
+      quantidade: 1,
+    },
+    {
+      id: 4,
+      nome: "Batom",
+      descricao: "Batom da Marta",
+      preco: 25.0,
+      imagem: imagemBatom,
+      quantidade: 1,
+    },
+    {
+      id: 5,
+      nome: "Base",
+      descricao: "Base da Virginia",
+      preco: 200.0,
+      imagem: imagemBase,
+      quantidade: 1,
+    },
+    {
+      id: 6,
+      nome: "Condicionador",
+      descricao: "Não cai cabelo",
+      preco: 15.0,
+      imagem: imagemCondiciona,
+      quantidade: 1,
+    },
+    {
+      id: 7,
+      nome: "Creme",
+      descricao: "É do bom",
+      preco: 135.0,
+      imagem: imagemCreme,
+      quantidade: 1,
+    },
+    {
+      id: 8,
+      nome: "Pincel",
+      descricao: "Variedades incríveis de pinceis",
+      preco: 20.0,
+      imagem: imagemPincel,
+      quantidade: 1,
+    },
+    // repita com outros
   ];
+
+  useEffect(() => {
+    //Pegar os itens do local storage
+    const storedCarrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    setCarrinho(storedCarrinho);
+  }, []);
+
+  useEffect(() => {
+    //Atualizar o local storage quando o carrinho alterar
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  }, [carrinho]);
 
   const adicionarAoCarrinho = (produto) => {
     const produtoNoCarrinho = carrinho.find((item) => item.id === produto.id);
 
     if (produtoNoCarrinho) {
+      //Atualizar número da quant...
       setCarrinho((prevCarrinho) =>
         prevCarrinho.map((item) =>
           item.id === produto.id
@@ -59,8 +137,10 @@ const Produtos = () => {
 
     // Set modal
     setShowModal(true);
-    // Update local storage
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    //Recurar itens do carrinho
+
+    // Atualizar o local storage quando o carrinho alterar
+    localStorage.setItem("carrinho", JSON.stringify(...carrinho, produto));
   };
 
   const limparCarrinho = () => {
@@ -83,11 +163,6 @@ const Produtos = () => {
     navigate("/TelaCar");
   };
 
-  useEffect(() => {
-    const storedCarrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    setCarrinho(storedCarrinho);
-  }, []);
-
   return (
     <div>
       <h1>Produtos Disponíveis</h1>
@@ -108,6 +183,7 @@ const Produtos = () => {
                   variant="primary"
                   onClick={() => adicionarAoCarrinho(produto)}
                 >
+                  <img src={cartImage} alt="Carrinho" className="cart-icon" />
                   Adicione ao carrinho
                 </Button>
               </Card.Body>
