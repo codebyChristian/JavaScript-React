@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useCart } from './CartContext';
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Card, Button, Modal } from "react-bootstrap";
 
@@ -16,7 +17,7 @@ const cartImage = require("./photo_react/carrinho_logo.png");
 
 const Produtos = () => {
   const [showModal, setShowModal] = useState(false);
-  const [carrinho, setCarrinho] = useState([]);
+  const [carrinho, setCarrinho] = useCart();
   const navigate = useNavigate();
 
   // Carregar as imagens antes de renderizar o componente
@@ -105,16 +106,6 @@ const Produtos = () => {
     // repita com outros
   ];
 
-  useEffect(() => {
-    //Pegar os itens do local storage
-    const storedCarrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    setCarrinho(storedCarrinho);
-  }, []);
-
-  useEffect(() => {
-    //Atualizar o local storage quando o carrinho alterar
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  }, [carrinho]);
 
   const adicionarAoCarrinho = (produto) => {
     const produtoNoCarrinho = carrinho.find((item) => item.id === produto.id);
@@ -139,8 +130,7 @@ const Produtos = () => {
     setShowModal(true);
     //Recurar itens do carrinho
 
-    // Atualizar o local storage quando o carrinho alterar
-    localStorage.setItem("carrinho", JSON.stringify(...carrinho, produto));
+ 
   };
 
   const limparCarrinho = () => {
