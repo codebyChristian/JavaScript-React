@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useCart } from './CartContext';
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Card, Button, Modal } from "react-bootstrap";
 
@@ -15,9 +14,8 @@ import imagemPincel from "./photo_react/pincel.jpg";
 
 const cartImage = require("./photo_react/carrinho_logo.png");
 
-const Produtos = () => {
+const Produtos = ({ carrinho, setCarrinho }) => {
   const [showModal, setShowModal] = useState(false);
-  const [carrinho, setCarrinho] = useCart();
   const navigate = useNavigate();
 
   // Carregar as imagens antes de renderizar o componente

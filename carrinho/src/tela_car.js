@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { useCart } from './CartContext';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const TelaCar = () => {
-    const { carrinho } = useCart();
+const TelaCar = ({ carrinho }) => {
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
     const calcularValorTotal = () => {
