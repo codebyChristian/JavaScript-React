@@ -199,7 +199,7 @@ const Produtos = ({ carrinho, setCarrinho }) => {
           className="btn btn-secondary"
           href="https://github.com/codebyChristian"
           target="_blank"
-          rel="author"
+          rel="noopener noreferrer"
         >
           Meu Perfil no GitHub
         </a>

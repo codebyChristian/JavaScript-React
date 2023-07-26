@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 const TelaCar = ({ carrinho, setCarrinho }) => {
-  const [showModal, setShowModal] = useState(false);  //setcarrinho
+    
   const navigate = useNavigate();
 
   const calcularValorTotal = () => {
@@ -16,10 +16,7 @@ const TelaCar = ({ carrinho, setCarrinho }) => {
     navigate("/");
   };
 
-  // Buscar os itens do carrinho
-  useEffect(() => {
-    //itens do carrinho
-  }, [carrinho]);
+
 
 //Aumentar e diminuir quantidade
 const aumentarQuantidade = (id) => {
