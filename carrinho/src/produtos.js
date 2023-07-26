@@ -64,7 +64,8 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 4,
       nome: "Batom",
-      descricao: "Obtenha lábios irresistíveis com nosso batom de longa duração!",
+      descricao:
+        "Obtenha lábios irresistíveis com nosso batom de longa duração!",
       preco: 25.0,
       imagem: imagemBatom,
       quantidade: 1,
@@ -72,7 +73,8 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 5,
       nome: "Base",
-      descricao: "Criando um visual impecável e sofisticado que não passa despercebido.",
+      descricao:
+        "Criando um visual impecável e sofisticado que não passa despercebido.",
       preco: 200.0,
       imagem: imagemBase,
       quantidade: 1,
