@@ -1,3 +1,12 @@
+# JavaScript + React + Bootstrap: Atividade Prática
+Nessa atividade prática você deverá criar um carrinho de compra usando o framework ReactJS. Antes de criar
+o carrinho de compra, você deverá criar a apresentação de uma página em que o usuário irá visualizar os
+produtos disponíveis. Esses produtos devem ser carregados dinamicamente. Para isso, você pode usar um
+array de objetos, com dados do nome do produto, descrição do produto e valor do produto que serão
+carregados nessa página inicial de visualização dos produtos disponíveis. Logo em seguida, o usuário poderá
+adicionar o produto no carrinho de compra e adicione os itens escolhidos em um localStorage. Apresente a
+tela do carrinho de compra com os itens escolhidos pelo usuário, recupere essa informação do localStorage.
+Pontos importantes: apresentar no carrinho de compra a quantidade de cada produto e o total da compra.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
