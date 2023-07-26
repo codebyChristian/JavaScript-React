@@ -39,24 +39,24 @@ const Produtos = ({ carrinho, setCarrinho }) => {
   const produtos = [
     {
       id: 1,
-      nome: "Sabonete",
-      descricao: "Sabonete suave",
+      nome: "Sabonete Limpol",
+      descricao: "Um sabonete delicadamente perfumado, criado para você!",
       preco: 10.0,
       imagem: imagemSabao,
       quantidade: 1,
     },
     {
       id: 2,
-      nome: "Brilho",
-      descricao: "Mais brilhante",
+      nome: "Brilho labial",
+      descricao: "Realce seus lábios com nosso brilho labial.",
       preco: 25.0,
       imagem: imagemBrilho,
       quantidade: 1,
     },
     {
       id: 3,
-      nome: "Perfume",
-      descricao: "Mixo de gato",
+      nome: "Tricky Scent",
+      descricao: "Deixe-se levar pelo aroma travesso do perfume Tricky Scent.",
       preco: 350.0,
       imagem: imagemPerfume,
       quantidade: 1,
@@ -64,7 +64,7 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 4,
       nome: "Batom",
-      descricao: "Batom da Marta",
+      descricao: "Obtenha lábios irresistíveis com nosso batom de longa duração!",
       preco: 25.0,
       imagem: imagemBatom,
       quantidade: 1,
@@ -72,7 +72,7 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 5,
       nome: "Base",
-      descricao: "Base da Virginia",
+      descricao: "Criando um visual impecável e sofisticado que não passa despercebido.",
       preco: 200.0,
       imagem: imagemBase,
       quantidade: 1,
@@ -80,7 +80,7 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 6,
       nome: "Condicionador",
-      descricao: "Não cai cabelo",
+      descricao: "Para fios irresistíveis e saudáveis em todos os momentos.",
       preco: 15.0,
       imagem: imagemCondiciona,
       quantidade: 1,
@@ -88,7 +88,7 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 7,
       nome: "Creme",
-      descricao: "É do bom",
+      descricao: "Uma pele perfeitamente hidratada com nosso creme luxuoso.",
       preco: 135.0,
       imagem: imagemCreme,
       quantidade: 1,
@@ -96,14 +96,13 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     {
       id: 8,
       nome: "Pincel",
-      descricao: "Variedades incríveis de pinceis",
+      descricao: "Cada pincel é uma ferramenta versátil e macia.",
       preco: 20.0,
       imagem: imagemPincel,
       quantidade: 1,
     },
     // repita com outros
   ];
-
 
   const adicionarAoCarrinho = (produto) => {
     const produtoNoCarrinho = carrinho.find((item) => item.id === produto.id);
@@ -127,8 +126,6 @@ const Produtos = ({ carrinho, setCarrinho }) => {
     // Set modal
     setShowModal(true);
     //Recurar itens do carrinho
-
- 
   };
 
   const limparCarrinho = () => {
@@ -153,7 +150,7 @@ const Produtos = ({ carrinho, setCarrinho }) => {
 
   return (
     <div>
-      <h1>Produtos Disponíveis</h1>
+      <h1 className="text-center">CHWISTA</h1>
       <Row className="row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-0">
         {produtos.map((produto) => (
           <Col key={produto.id} className="mb-4">
@@ -196,6 +193,17 @@ const Produtos = ({ carrinho, setCarrinho }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <footer className="mt-4 text-center">
+        <p>Desenvolvido por Christian Cardoso</p>
+        <a
+          className="btn btn-secondary"
+          href="https://github.com/codebyChristian"
+          target="_blank"
+          rel="author"
+        >
+          Meu Perfil no GitHub
+        </a>
+      </footer>
     </div>
   );
 };
