@@ -151,14 +151,14 @@ const Produtos = ({ carrinho, setCarrinho }) => {
   };
 
   return (
-    <div>
+    <div style={{paddingLeft: '10px'}}>
       <h1 className="text-center">CHWISTA</h1>
       <Row className="row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-0">
         {produtos.map((produto) => (
           <Col key={produto.id} className="mb-4">
             <Card
               key={produto.id}
-              style={{ width: "95%" }}
+              style={{ width: "97%" }}
               className="text-center"
             >
               <Card.Img variant="top" src={produto.imagem} alt={produto.nome} />

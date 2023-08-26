@@ -67,7 +67,7 @@ const diminuirQuantidade = (id) => {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-center">
+          <p className="mt-4 text-center ">
             Valor Total da Compra: R$ {calcularValorTotal()}
           </p>
           <div className="text-center">
